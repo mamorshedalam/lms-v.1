@@ -1,0 +1,29 @@
+{
+  "name": "lms-v.1",
+  "version": "1.0.0",
+  "description": "Library Management System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mamorshedalam/lms-v.1.git"
+  },
+  "author": "Morshed Alam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamorshedalam/LMS/issues"
+  },
+  "homepage": "https://github.com/mamorshedalam/LMS#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

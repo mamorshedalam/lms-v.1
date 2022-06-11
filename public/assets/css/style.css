@@ -1,0 +1,342 @@
+/* ========== DEFAULT STYLE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  color: #111d2c;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f0f8ff;
+}
+
+/* ========== RESET TAG ========== */
+a {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+li {
+  list-style: none;
+}
+
+/* ========== NAV ========== */
+.fix-section {
+  text-align: center;
+  padding: 15px 10px;
+  background-color: #111d2c;
+}
+nav {
+  height: 110px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.55);
+}
+nav .logo h1 {
+  font-size: 34px;
+  color: #f0f8ff;
+  padding-bottom: 20px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+nav .menu ul {
+  width: 576px;
+  display: grid;
+  margin: 0 auto;
+  place-items: center;
+  grid-template-columns: repeat(4, 25%);
+}
+nav .menu-item {
+  height: 25px;
+  width: 144px;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #f0f8ff;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0.67px;
+  text-transform: uppercase;
+  border-right: 2px solid #f0f8ff;
+}
+nav .menu li:last-child .menu-item {
+  border: none;
+}
+nav .menu-item:hover {
+  font-size: 16px;
+  color: #7cb9e8;
+  transition: color 0.45s, font-size 0.45s;
+}
+@media only screen and (max-width: 768px) {
+  nav {
+    height: 100px;
+  }
+  nav .logo h1 {
+    font-size: 31px;
+    padding-bottom: 15px;
+  }
+  nav .menu ul {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .fix-section {
+    padding: 10px 0;
+  }
+  nav {
+    height: 70px;
+  }
+  nav .logo h1 {
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  nav li {
+    margin: 0 auto;
+  }
+  nav .menu-item {
+    height: 16px;
+    width: 100%;
+    padding: 0 5px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  nav .logo h1 {
+    font-size: 16px;
+  }
+}
+/* ========== NAV END ========== */
+
+/* ========== MAIN ========== */
+main {
+  width: 90%;
+  margin: 25px auto;
+  min-height: calc(100vh - 210px);
+}
+section .container {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+}
+section .item {
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 0 10px 15px;
+  border: 1px solid #111d2c;
+  transition: box-shadow 0.45s;
+  box-shadow: -4px 7px 40px -14px #cacaca;
+}
+section .item:hover {
+  box-shadow: -3px 11px 13px 3px #cacaca;
+}
+section img {
+  width: 30%;
+  height: 120px;
+  object-fit: cover;
+}
+section .text {
+  width: 70%;
+  padding: 15px 0;
+  padding-left: 15px;
+}
+section h2 {
+  font-size: 21px;
+}
+section p {
+  padding-top: 10px;
+  font-size: 16px;
+}
+section span {
+  font-weight: 600;
+}
+@media only screen and (max-width: 768px) {
+  main {
+    width: 95%;
+    margin: 20px auto;
+    min-height: calc(100vh - 180px);
+  }
+  section .container {
+    grid-template-columns: repeat(2, 50%);
+  }
+  section img {
+    height: 100px;
+  }
+  section h2 {
+    font-size: 18px;
+  }
+  section p {
+    padding-top: 5px;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  main {
+    width: 100%;
+    margin: 10px auto;
+    min-height: calc(100vh - 130px);
+  }
+  section .container {
+    grid-template-columns: repeat(1, 100%);
+  }
+  section img {
+    height: 100px;
+  }
+  section .text {
+    padding: 10px 0;
+    padding-left: 10px;
+  }
+  section h2 {
+    font-size: 18px;
+  }
+  section p {
+    padding-top: 5px;
+    font-size: 14px;
+  }
+}
+
+/* ========== SEARCH ========== */
+form .input-item {
+  width: 576px;
+  display: flex;
+  padding: 15px;
+  margin: 0 auto 15px;
+  border: 1px solid #111d2c;
+}
+form .input-item label {
+  width: 21px;
+}
+form .input-item label img {
+  width: 100%;
+}
+form .input-item input {
+  border: 0;
+  width: 100%;
+  font-size: 18px;
+  padding-left: 15px;
+  background-color: transparent;
+}
+@media only screen and (max-width: 768px) {
+  form .input-item {
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  form .input-item {
+    width: 80%;
+    padding: 8px;
+  }
+  form .input-item label {
+    width: 14px;
+  }
+  form .input-item input {
+    font-size: 14px;
+    padding-left: 10px;
+  }
+}
+
+/* ========== HOME ========== */
+#home-section .item,
+#author-section .item {
+  display: flex;
+}
+#home-section img {
+  height: 180px;
+}
+@media only screen and (max-width: 768px) {
+  #home-section img {
+    height: 125px;
+  }
+}
+
+/* ========== CATEGORY ========== */
+#category-section .item,
+#borrow-section .item {
+  padding: 15px;
+}
+#category-section .item h2 {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #111d2c;
+}
+#category-section .item span {
+  font-size: 14px;
+  color: #f0f8ff;
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 15px;
+  background-color: #111d2c;
+}
+#category-section .item ul {
+  margin-left: 25px;
+}
+#category-section .list-item {
+  display: block;
+  padding: 4px 0;
+  font-size: 18px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+#category-section .list-item::before {
+  left: -15px;
+  content: "-";
+  position: absolute;
+}
+#category-section .list-item:hover {
+  color: #7cb9e8;
+  transition: color 0.45s;
+}
+@media only screen and (max-width: 768px) {
+  #category-section .item ul {
+    margin-left: 15px;
+  }
+  #category-section .list-item {
+    font-size: 16px;
+  }
+  #category-section .list-item::before {
+    left: -10px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  #category-section .item,
+  #borrow-section .item {
+    padding: 10px;
+  }
+  #category-section .item span {
+    font-size: 12px;
+  }
+}
+/* ========== MAIN END ========== */
+
+/* ========== FOOTER ========== */
+footer {
+  height: 50px;
+}
+footer p {
+  opacity: 0.65;
+  font-size: 13px;
+  color: #f0f8ff;
+  font-style: italic;
+  word-spacing: 1.6px;
+  text-transform: capitalize;
+}
+footer p a {
+  color: #00ffff;
+  font-style: normal;
+}
+footer p a:hover {
+  color: #7cb9e8;
+  transition: color 0.45s;
+}
+@media only screen and (max-width: 768px) {
+  footer {
+    height: 40px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  footer {
+    height: 30px;
+  }
+}
+/* ========== FOOTER END ========== */

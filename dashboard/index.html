@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>LMS | Dashboard</title>
+
+     <!-- CSS -->
+     <link rel="stylesheet" href="assets/css/main.css">
+     <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+     <!-- ========== NAV ========== -->
+     <nav class="fix-section">
+          <div class="logo">
+               <h1>Library Management System</h1>
+          </div>
+          <header class="menu">
+               <ul>
+                    <li><a onclick="toggleView('home-section')" class="menu-item">View</a></li>
+                    <li><a onclick="toggleView('upload-section')" class="menu-item">Upload</a></li>
+               </ul>
+          </header>
+     </nav>
+     <!-- ========== NAV END ========== -->
+
+     <!-- ========== MAIN ========== -->
+     <main class="dashboard">
+          <section id="home-section" class="hide">
+               <table>
+                    <tr>
+                         <th>Sl</th>
+                         <th>Name</th>
+                         <th>Author</th>
+                         <th>Category</th>
+                         <th>Cover</th>
+                         <th></th>
+                    </tr>
+                    <tr class="item">
+                         <td>1</td>
+                         <td>Name</td>
+                         <td>Author</td>
+                         <td>Category</td>
+                         <td><img src="assets/img/robindonath-ekhane-kkhono-khete-asenni.jpg" alt=""></td>
+                         <td><a id="btn">&times;</a></td>
+                    </tr>
+               </table>
+          </section>
+          <section id="upload-section" class="show">
+               <form action="">
+                    <table>
+                         <tr>
+                              <th>Sl</th>
+                              <th>Name</th>
+                              <th>Author</th>
+                              <th>Category</th>
+                              <th>Cover</th>
+                              <th></th>
+                         </tr>
+                         <tr class="item">
+                              <td>1</td>
+                              <td><input type="text" placeholder="Book Name" class="book-name" required></td>
+                              <td><input type="text" placeholder="Author Name" class="author-name" required></td>
+                              <td><input type="text" placeholder="Book Category" class="category" required></td>
+                              <td><input type="file" class="book-cover" required></td>
+                              <td>
+                                   <a onclick="addField(this)">&plus;</a>
+                                   <a onclick="removeField(this)">&times;</a>
+                              </td>
+                         </tr>
+                    </table>
+                    <button>Add Books</button>
+               </form>
+          </section>
+     </main>
+     <!-- ========== MAIN END ========== -->
+
+     <!-- ========== FOOTER ========== -->
+     <footer class="fix-section">
+          <p>&copy; all right reserved. developed by - <a target="_blank" href="https://mamorshedalam.netlify.app/">M.A</a></p>
+     </footer>
+     <!-- ========== FOOTER END ========== -->
+
+     <!-- SCRIPT -->
+     <script src="assets/js/app.js"></script>
+</body>
+
+</html>
