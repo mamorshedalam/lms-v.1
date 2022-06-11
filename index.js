@@ -29,7 +29,7 @@ app.use('/dashboard', express.static(path.join(__dirname, '/dashboard')));
 // ROUTES
 app.use('/', require('./routes/root'));
 app.use('/dashboard', require('./routes/dashboard'));
-// app.use('/books', require('./routes/api'));
+app.use('/api', require('./routes/api'));
 
 // 404 handler
 app.all('*', notFoundHandler)
