@@ -15,8 +15,9 @@ const createView = (bookList) => {
                          <td>${book.author}</td>
                          <td>${book.category}</td>
                          <td><img src="assets/img/robindonath-ekhane-kkhono-khete-asenni.jpg" alt=""></td>
-                         <td><a id="btn">&times;</a></td>`
+                         <td><a onclick="removeData(this)">&times;</a></td>`
           newField.className = "item";
+          newField.setAttribute('name', book._id);
 
           table.appendChild(newField);
      })
@@ -64,6 +65,18 @@ function removeField(btn) {
                item.children[0].innerText = index + 1
           })
      }
+}
+
+// REMOVE DATA
+function removeData(btn) {
+     removeField(btn);
+
+     const book = btn.closest('.item').getAttribute('name');
+     axios.delete('/api', { data: { id: book } })
+          .then(({ data }) => {
+               if(deletedCount == 1){alert("Data has been deleted")}
+          })
+          .catch(err => { alert(err) })
 }
 
 // FORM FILL UP
