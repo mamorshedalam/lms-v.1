@@ -1,5 +1,27 @@
 // VARIABLES ASSIGN
 
+
+
+// FUNCTIONS
+const createView = (bookList) => {
+     const view = document.getElementById('home-section');
+     const table = view.querySelector('tbody');
+
+
+     bookList.forEach((book, index) => {
+          const newField = document.createElement('tr');
+          newField.innerHTML = `<td>${index + 1}</td>
+                         <td>${book.name}</td>
+                         <td>${book.author}</td>
+                         <td>${book.category}</td>
+                         <td><img src="assets/img/robindonath-ekhane-kkhono-khete-asenni.jpg" alt=""></td>
+                         <td><a id="btn">&times;</a></td>`
+          newField.className = "item";
+
+          table.appendChild(newField);
+     })
+}
+
 // SECTION TOGGLE
 function toggleView(section) {
      const toggleSection = document.getElementById(section);
@@ -60,10 +82,25 @@ bookUpload.addEventListener('submit', (event) => {
                name: bookName[i].value,
                author: authorName[i].value,
                category: category[i].value,
-               cover: bookCover[i].value
+               // cover: bookCover[i].value
           }
           bookList.push(book);
      }
-     console.log(bookList);
+     axios.post('/api', bookList)
+          .then(({ data }) => {
+               if (data.length > 0) { alert("Data has been uploaded") }
+          })
+          .catch(err => { alert(err) })
      bookUpload.reset();
 })
+
+// DATA VIEW
+window.onload = function () {
+     axios.get('/api')
+          .then(({ data }) => {
+               if (data.length > 0) {
+                    createView(data)
+               }
+          })
+          .catch(err => { alert(err) })
+}
