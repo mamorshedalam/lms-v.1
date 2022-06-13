@@ -14,13 +14,23 @@ const createView = (bookList) => {
                          <td>${book.name}</td>
                          <td>${book.author}</td>
                          <td>${book.category}</td>
-                         <td><img src="assets/img/robindonath-ekhane-kkhono-khete-asenni.jpg" alt=""></td>
+                         <td><img src="${book.cover.url}" alt=""></td>
                          <td><a onclick="removeData(this)">&times;</a></td>`
           newField.className = "item";
           newField.setAttribute('name', book._id);
 
           table.appendChild(newField);
      })
+}
+const imgCovt = (input) => {
+     const img = input.nextElementSibling;
+     let reader = new FileReader();
+
+     const file = input.files[0];
+     reader.onload = () => {
+          img.src = reader.result
+     }
+     reader.readAsDataURL(file);
 }
 
 // SECTION TOGGLE
@@ -42,7 +52,10 @@ function addField(btn) {
                          <td><input type="text" placeholder="Book Name" class="book-name" required></td>
                          <td><input type="text" placeholder="Author Name" class="author-name" required></td>
                          <td><input type="text" placeholder="Book Category" class="category" required></td>
-                         <td><input type="file" class="book-cover" required></td>
+                         <td>
+                              <input type="file" class="book-cover" onchange="imgCovt(this)" required>
+                              <img class="book-cover" src="" alt="Upload Image">
+                         </td>
                          <td>
                               <a onclick="addField(this)">&plus;</a>
                               <a onclick="removeField(this)">&times;</a>
@@ -74,7 +87,7 @@ function removeData(btn) {
      const book = btn.closest('.item').getAttribute('name');
      axios.delete('/api', { data: { id: book } })
           .then(({ data }) => {
-               if(deletedCount == 1){alert("Data has been deleted")}
+               if (deletedCount == 1) { alert("Data has been deleted") }
           })
           .catch(err => { alert(err) })
 }
@@ -95,13 +108,15 @@ bookUpload.addEventListener('submit', (event) => {
                name: bookName[i].value,
                author: authorName[i].value,
                category: category[i].value,
-               // cover: bookCover[i].value
+               cover: bookCover[i].src
           }
           bookList.push(book);
      }
      axios.post('/api', bookList)
-          .then(({ data }) => {
-               if (data.length > 0) { alert("Data has been uploaded") }
+          .then(({status}) => {
+               if(status == 200){
+                    alert("Data has been uploaded")
+               }
           })
           .catch(err => { alert(err) })
      bookUpload.reset();

@@ -58,7 +58,10 @@
                               <td><input type="text" placeholder="Book Name" class="book-name" required></td>
                               <td><input type="text" placeholder="Author Name" class="author-name" required></td>
                               <td><input type="text" placeholder="Book Category" class="category" required></td>
-                              <td><input type="file" class="book-cover" required></td>
+                              <td>
+                                   <input type="file" onchange="imgCovt(this)" required>
+                                   <img class="book-cover" src="" alt="Upload Image">
+                              </td>
                               <td>
                                    <a onclick="addField(this)">&plus;</a>
                                    <a onclick="removeField(this)">&times;</a>

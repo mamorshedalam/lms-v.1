@@ -15,7 +15,7 @@ const createHome = (bookList) => {
 
      bookList.forEach(book => {
           const newDiv = document.createElement('div');
-          newDiv.innerHTML = `<img src="assets/img/robindonath-ekhane-kkhono-khete-asenni.jpg" alt="">
+          newDiv.innerHTML = `<img src="${book.cover.url}" alt="">
                               <div class="text">
                                    <h2>${book.name}</h2>
                                    <p>Author: <span>${book.author}</span></p>
@@ -27,12 +27,22 @@ const createHome = (bookList) => {
      })
 }
 
+const createCategory = (bookList) => {
+     bookList.forEach(book => {
+          if (book.category == "Mystery") {
+
+          }
+
+     })
+}
+
 // DATA VIEW
 window.onload = function () {
      axios.get('/api')
           .then(({ data }) => {
                if (data.length > 0) {
-                    createHome(data)
+                    createHome(data);
+                    createCategory(data);
                }
           })
           .catch(err => { alert(err) })

@@ -5,10 +5,14 @@ const bookSchema = new Schema({
      name: String,
      author: String,
      category: String,
-     // cover: {
-     //      data: Buffer,
-     //      contentType: String
-     // },
+     cover: {
+          public_id: {
+               type: String,
+          },
+          url: {
+               type: String,
+          }
+     }
 })
 
 module.exports = mongoose.model('Book', bookSchema);
