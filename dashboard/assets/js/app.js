@@ -6,6 +6,7 @@
 const createView = (bookList) => {
      const view = document.getElementById('home-section');
      const table = view.querySelector('tbody');
+     table.innerHTML = "";
 
 
      bookList.forEach((book, index) => {
@@ -21,6 +22,37 @@ const createView = (bookList) => {
 
           table.appendChild(newField);
      })
+}
+const createFilter = (div, dataList) => {
+     const filterDiv = document.getElementById(div);
+
+     dataList.forEach(data => {
+          const item = document.createElement('li');
+          item.innerHTML = `<li><a onclick="findData(this)" class="item">${data}</a></li>`;
+
+          filterDiv.appendChild(item);
+     })
+}
+const filterData = (bookList) => {
+     let authors = [];
+     let categorys = [];
+
+     bookList.forEach(book => {
+          const author = book.author;
+          const category = book.category;
+
+          if (!authors.includes(author)) {
+               authors.push(author);
+          }
+
+          if (!categorys.includes(category)) {
+               categorys.push(category);
+          }
+     })
+
+     createFilter("filter-author", authors);
+     createFilter("filter-category", categorys);
+
 }
 const imgCovt = (input) => {
      const img = input.nextElementSibling;
@@ -53,7 +85,7 @@ function addField(btn) {
                          <td><input type="text" placeholder="Author Name" class="author-name" required></td>
                          <td><input type="text" placeholder="Book Category" class="category" required></td>
                          <td>
-                              <input type="file" class="book-cover" onchange="imgCovt(this)" required>
+                              <input type="file" onchange="imgCovt(this)" required>
                               <img class="book-cover" src="" alt="Upload Image">
                          </td>
                          <td>
@@ -87,7 +119,21 @@ function removeData(btn) {
      const book = btn.closest('.item').getAttribute('name');
      axios.delete('/api', { data: { id: book } })
           .then(({ data }) => {
-               if (deletedCount == 1) { alert("Data has been deleted") }
+               if (data.deletedCount == 1) { alert("Data has been deleted") }
+          })
+          .catch(err => { alert(err) })
+}
+
+// FIND DATA
+function findData(btn) {
+     const criteria = btn.innerText.toLowerCase();
+
+     axios.get('/api')
+          .then(({ data }) => {
+               if (data.length > 0) {
+                    const newData = data.filter(book => book.author == criteria || book.category == criteria);
+                    createView(newData);
+               }
           })
           .catch(err => { alert(err) })
 }
@@ -105,21 +151,27 @@ bookUpload.addEventListener('submit', (event) => {
      let bookList = [];
      for (let i = 0; i < bookName.length; i++) {
           const book = {
-               name: bookName[i].value,
-               author: authorName[i].value,
-               category: category[i].value,
+               name: bookName[i].value.toLowerCase(),
+               author: authorName[i].value.toLowerCase(),
+               category: category[i].value.toLowerCase(),
                cover: bookCover[i].src
           }
           bookList.push(book);
      }
      axios.post('/api', bookList)
-          .then(({status}) => {
-               if(status == 200){
-                    alert("Data has been uploaded")
+          .then(({ status }) => {
+               if (status == 200) {
+                    alert("Data has been uploaded");
                }
           })
           .catch(err => { alert(err) })
+
      bookUpload.reset();
+
+     const items = bookUpload.querySelectorAll('.item');
+     for (let x = 1; x < items.length; x++) {
+          items[x].remove();
+     }
 })
 
 // DATA VIEW
@@ -127,7 +179,8 @@ window.onload = function () {
      axios.get('/api')
           .then(({ data }) => {
                if (data.length > 0) {
-                    createView(data)
+                    createView(data);
+                    filterData(data);
                }
           })
           .catch(err => { alert(err) })

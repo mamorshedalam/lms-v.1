@@ -134,6 +134,45 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.dashboard .filter-div {
+  padding: 10px 0;
+  margin-bottom: 15px;
+  border-bottom: 5px solid #111d2c;
+}
+.dashboard .filter-div > li {
+  position: relative;
+  width: 133px;
+}
+.dashboard .filter-div li ul {
+  position: absolute;
+  top: 15px;
+  left: 133px;
+  width: 0;
+  overflow: hidden;
+}
+.dashboard .filter-div > li:hover ul {
+  width: 275px;
+  transition: width 0.45s;
+}
+.dashboard .filter-div li ul li {
+  width: 100%;
+}
+.dashboard .filter-div .item {
+  background-color: #7cb9e8;
+  padding: 5px 25px;
+  border: 1px solid #111d2c;
+  font-weight: 600;
+  min-width: 100%;
+  font-size: 14px;
+  color: #111d2c;
+  transition: background-color 0.45s color 0.45s;
+}
+.dashboard .filter-div .item:hover {
+  background-color: #111d2c;
+  color: #f0f8ff;
+}
+
 .dashboard table {
   width: 100%;
   border-collapse: collapse;
@@ -155,10 +194,10 @@ td {
   width: 100%;
   object-fit: cover;
 }
-.dashboard table td:nth-child(4){
+.dashboard table td:nth-child(4) {
   width: 10%;
 }
-.dashboard table td:nth-child(5){
+.dashboard table td:nth-child(5) {
   width: 10%;
 }
 .dashboard table td:first-child {

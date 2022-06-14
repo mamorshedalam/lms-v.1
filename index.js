@@ -18,9 +18,9 @@ const app = express();
 // coss origin resource sharing
 app.use(cors(corsOptions));
 // built-in middleware to handle urlencoded data
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }, { limit: '50mb' }));
 // built-in middleware for json
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // serve static files
 app.use('/', express.static(path.join(__dirname, '/public')));

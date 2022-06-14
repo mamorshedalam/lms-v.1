@@ -10,9 +10,10 @@ const getBook = async (req, res) => {
 
 const createBook = (req, res) => {
      const data = req.body;
-     data.forEach(async book => {
-          const { name, author, category, cover } = book;
-          try {
+     try {
+          let bookList = [];
+          data.forEach(async data => {
+               const { name, author, category, cover } = data;
                const result = await cloudinary.uploader.upload(cover, {
                     folder: "books",
                     height: "200",
@@ -26,9 +27,10 @@ const createBook = (req, res) => {
                          url: result.secure_url
                     }
                });
-               res.status(200).json(book);
-          } catch (err) { console.error(err) }
-     })
+               bookList.push(book);
+          })
+          res.status(200).json(bookList);
+     } catch (err) { console.error(err) }
 }
 
 const deleteBook = async (req, res) => {
