@@ -8,7 +8,6 @@
      <title>LMS</title>
 
      <!-- CSS -->
-     <link rel="stylesheet" href="assets/css/main.css">
      <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -20,10 +19,9 @@
           </div>
           <header class="menu">
                <ul>
-                    <li><a onclick="toggleView('home-section')" class="menu-item">Home</a></li>
-                    <li><a onclick="toggleView('author-section'); createSection('author-section', AUTHOR)" class="menu-item">Author</a></li>
-                    <li><a onclick="toggleView('category-section'); createSection('category-section', CATEGORY)" class="menu-item">Category </a></li>
-                    <!-- <li><a onclick="toggleView('borrow-section')" class="menu-item">Borrow </a></li> -->
+                    <li><a onclick="toggleView('home-section'); createHome(DATABASE)" class="menu-item">Home</a></li>
+                    <li><a onclick="toggleView('author-section'); createItem('author-section', AUTHOR)" class="menu-item">Author</a></li>
+                    <li><a onclick="toggleView('category-section'); createItem('category-section', CATEGORY)" class="menu-item">Category </a></li>
                </ul>
           </header>
      </nav>
@@ -60,34 +58,6 @@
                </div>
           </section>
           <!-- ========== CATEGORY SECTION END ========== -->
-
-          <!-- ========== BORROW SECTION ==========
-          <section id="borrow-section" class="hide">
-               <div class="container">
-                    <div class="item">
-                         <h2>Book Name</h2>
-                         <p>Author: <span>Morshed Alam</span></p>
-                         <p>Borrow by: <span>Morshed Alam</span></p>
-                    </div>
-                    <div class="item">
-                         <h2>Book Name</h2>
-                         <p>Author: <span>Morshed Alam</span></p>
-                         <p>Borrow by: <span>Morshed Alam</span></p>
-                    </div>
-                    <div class="item">
-                         <h2>Book Name</h2>
-                         <p>Author: <span>Morshed Alam</span></p>
-                         <p>Borrow by: <span>Morshed Alam</span></p>
-                    </div>
-                    <div class="item">
-                         <h2>Book Name</h2>
-                         <p>Author: <span>Morshed Alam</span></p>
-                         <p>Borrow by: <span>Morshed Alam</span></p>
-                    </div>
-               </div>
-          </section>
-          ========== BORROW SECTION END ========== -->
-
      </main>
      <!-- ========== MAIN END ========== -->
 

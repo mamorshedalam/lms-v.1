@@ -271,3 +271,13 @@ footer p a:hover {
   }
 }
 /* ========== FOOTER END ========== */
+
+
+/* ========== SCRIPT CSS ========== */
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+/* ========== SCRIPT CSS END ========== */

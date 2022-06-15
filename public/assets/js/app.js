@@ -1,16 +1,12 @@
+// VARIABLES ASSIGN
 let DATABASE = [];
 let CATEGORY = [];
 let AUTHOR = [];
-// SECTION TOGGLE
-function toggleView(section) {
-     const toggleSection = document.getElementById(section);
-     const allSection = document.querySelectorAll('main section');
-     allSection.forEach(item => { item.className = 'hide'; });
 
-     toggleSection.className = 'show';
-}
 
-function createList(item, lists) {
+// IN APP FUNCTIONS
+
+const createList = (item, lists) => {
      const ul = item.querySelector('ul');
 
      for (let i = 0; i < lists.length; i++) {
@@ -22,7 +18,51 @@ function createList(item, lists) {
      }
 }
 
-function createSection(section, criteria) {
+const createHome = (bookList) => {
+     const view = document.getElementById('home-section');
+     const container = view.querySelector('.container');
+
+
+     bookList.forEach(book => {
+          const item = document.createElement('div');
+          item.className = "item";
+          item.innerHTML = `<img src="${book.cover.url}" alt="">
+                              <div class="text">
+                                   <h2>${book.name}</h2>
+                                   <p>Author: <span>${book.author}</span></p>
+                                   <p>Category: <span>${book.category}</span></p>
+                              </div>`;
+
+          container.appendChild(item);
+     })
+}
+
+const createArrays = (database) => {
+     database.forEach(book => {
+          const author = book.author;
+          const category = book.category;
+
+          if (!AUTHOR.includes(author)) {
+               AUTHOR.push(author);
+          }
+          if (!CATEGORY.includes(category)) {
+               CATEGORY.push(category);
+          }
+     })
+}
+
+
+// CALL FUNCTIONS
+
+function toggleView(section) {
+     const toggleSection = document.getElementById(section);
+     const allSection = document.querySelectorAll('main section');
+     allSection.forEach(item => { item.className = 'hide'; });
+
+     toggleSection.className = 'show';
+}
+
+function createItem(section, criteria) {
      const targetSection = document.getElementById(section);
      const container = targetSection.querySelector('.container');
 
@@ -40,48 +80,16 @@ function createSection(section, criteria) {
      })
 
 }
-// FUNCTIONS
-const createHome = (bookList) => {
-     const view = document.getElementById('home-section');
-     const container = view.querySelector('.container');
 
 
-     bookList.forEach(book => {
-          const newDiv = document.createElement('div');
-          newDiv.innerHTML = `<img src="${book.cover.url}" alt="">
-                              <div class="text">
-                                   <h2>${book.name}</h2>
-                                   <p>Author: <span>${book.author}</span></p>
-                                   <p>Category: <span>${book.category}</span></p>
-                              </div>`
-          newDiv.className = "item";
-
-          container.appendChild(newDiv);
-     })
-}
-
-const createCategory = (database) => {
-     database.forEach(book => {
-          const author = book.author;
-          const category = book.category;
-
-          if (!AUTHOR.includes(author)) {
-               AUTHOR.push(author);
-          }
-          if (!CATEGORY.includes(category)) {
-               CATEGORY.push(category);
-          }
-     })
-}
-
-// DATA VIEW
+// IN APP EVENTS
 window.onload = function () {
      axios.get('/api')
           .then(({ data }) => {
                if (data.length > 0) {
                     DATABASE = data;
                     createHome(DATABASE);
-                    createCategory(DATABASE);
+                    createArrays(DATABASE);
                }
           })
           .catch(err => { alert(err) })
