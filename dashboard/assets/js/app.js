@@ -1,28 +1,12 @@
 // VARIABLES ASSIGN
+let DATABASE = [];
+let CATEGORY = [];
+let AUTHOR = [];
 
 
+// IN APP FUNCTIONS
 
-// FUNCTIONS
-const createView = (bookList) => {
-     const view = document.getElementById('home-section');
-     const table = view.querySelector('tbody');
-     table.innerHTML = "";
-
-
-     bookList.forEach((book, index) => {
-          const newField = document.createElement('tr');
-          newField.innerHTML = `<td>${index + 1}</td>
-                         <td>${book.name}</td>
-                         <td>${book.author}</td>
-                         <td>${book.category}</td>
-                         <td><img src="${book.cover.url}" alt=""></td>
-                         <td><a onclick="removeData(this)">&times;</a></td>`
-          newField.className = "item";
-          newField.setAttribute('name', book._id);
-
-          table.appendChild(newField);
-     })
-}
+// CREATE FILTER MENU
 const createFilter = (div, dataList) => {
      const filterDiv = document.getElementById(div);
 
@@ -33,28 +17,46 @@ const createFilter = (div, dataList) => {
           filterDiv.appendChild(item);
      })
 }
-const filterData = (bookList) => {
-     let authors = [];
-     let categorys = [];
+// CREATE VIEW SECTION
+const createView = (bookList) => {
+     const view = document.getElementById('home-section');
+     const table = view.querySelector('tbody');
+     table.innerHTML = "";
 
-     bookList.forEach(book => {
+     bookList.forEach((book, index) => {
+          const field = document.createElement('tr');
+          field.setAttribute('name', book._id);
+          field.className = "item";
+          field.innerHTML = `<td>${index + 1}</td>
+                         <td>${book.name}</td>
+                         <td>${book.author}</td>
+                         <td>${book.category}</td>
+                         <td><img src="${book.cover.url}" alt=""></td>
+                         <td><a onclick="removeData(this)">&times;</a></td>`;
+
+          table.appendChild(field);
+     })
+}
+// ASSIGN ARRAYS
+const createArrays = (database) => {
+     database.forEach(book => {
           const author = book.author;
           const category = book.category;
 
-          if (!authors.includes(author)) {
-               authors.push(author);
+          if (!AUTHOR.includes(author)) {
+               AUTHOR.push(author);
           }
-
-          if (!categorys.includes(category)) {
-               categorys.push(category);
+          if (!CATEGORY.includes(category)) {
+               CATEGORY.push(category);
           }
      })
-
-     createFilter("filter-author", authors);
-     createFilter("filter-category", categorys);
-
 }
-const imgCovt = (input) => {
+
+
+// CALL FUNCTIONS
+
+// CONVERT IMG TO BIT64
+function imgCovt(input) {
      const img = input.nextElementSibling;
      let reader = new FileReader();
 
@@ -64,7 +66,6 @@ const imgCovt = (input) => {
      }
      reader.readAsDataURL(file);
 }
-
 // SECTION TOGGLE
 function toggleView(section) {
      const toggleSection = document.getElementById(section);
@@ -73,7 +74,13 @@ function toggleView(section) {
 
      toggleSection.className = 'show';
 }
+// FIND DATA
+function findData(btn) {
+     const criteria = btn.innerText.toLowerCase();
 
+     const items = DATABASE.filter(book => book.author == criteria || book.category == criteria);
+     createView(items);
+}
 // ADD NEW FIELD
 function addField(btn) {
      const table = btn.closest('tbody');
@@ -96,7 +103,6 @@ function addField(btn) {
 
      table.appendChild(newField);
 }
-
 // REMOVE FIELD
 function removeField(btn) {
      const table = btn.closest('tbody');
@@ -105,13 +111,12 @@ function removeField(btn) {
      if (fiendCount > 2) {
           btn.closest('tr').remove();
 
-          const allFields = table.querySelectorAll('.item');
-          allFields.forEach((item, index) => {
+          const items = table.querySelectorAll('.item');
+          items.forEach((item, index) => {
                item.children[0].innerText = index + 1
           })
      }
 }
-
 // REMOVE DATA
 function removeData(btn) {
      removeField(btn);
@@ -123,22 +128,15 @@ function removeData(btn) {
           })
           .catch(err => { alert(err) })
 }
-
-// FIND DATA
-function findData(btn) {
-     const criteria = btn.innerText.toLowerCase();
-
-     axios.get('/api')
-          .then(({ data }) => {
-               if (data.length > 0) {
-                    const newData = data.filter(book => book.author == criteria || book.category == criteria);
-                    createView(newData);
-               }
-          })
-          .catch(err => { alert(err) })
+// RELOAD VIEW SECTION
+function reload() {
+     createView(DATABASE);
 }
 
-// FORM FILL UP
+
+// IN APP EVENTS
+
+// UPLOAD BOOKS FORM
 const bookUpload = document.querySelector('#upload-section form');
 bookUpload.addEventListener('submit', (event) => {
      event.preventDefault();
@@ -173,14 +171,16 @@ bookUpload.addEventListener('submit', (event) => {
           items[x].remove();
      }
 })
-
 // DATA VIEW
 window.onload = function () {
      axios.get('/api')
           .then(({ data }) => {
                if (data.length > 0) {
-                    createView(data);
-                    filterData(data);
+                    DATABASE = data;
+                    createArrays(DATABASE);
+                    createView(DATABASE);
+                    createFilter("filter-author", AUTHOR);
+                    createFilter("filter-category", CATEGORY);
                }
           })
           .catch(err => { alert(err) })

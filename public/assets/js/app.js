@@ -6,6 +6,7 @@ let AUTHOR = [];
 
 // IN APP FUNCTIONS
 
+// CREATE LISTS FOR ITEMS
 const createList = (item, lists) => {
      const ul = item.querySelector('ul');
 
@@ -17,7 +18,7 @@ const createList = (item, lists) => {
           ul.appendChild(list);
      }
 }
-
+// CREATE HOME SECTION
 const createHome = (bookList) => {
      const view = document.getElementById('home-section');
      const container = view.querySelector('.container');
@@ -36,7 +37,7 @@ const createHome = (bookList) => {
           container.appendChild(item);
      })
 }
-
+// ASSIGN ARRAYS
 const createArrays = (database) => {
      database.forEach(book => {
           const author = book.author;
@@ -54,6 +55,7 @@ const createArrays = (database) => {
 
 // CALL FUNCTIONS
 
+// SECTION TOGGLE
 function toggleView(section) {
      const toggleSection = document.getElementById(section);
      const allSection = document.querySelectorAll('main section');
@@ -61,7 +63,7 @@ function toggleView(section) {
 
      toggleSection.className = 'show';
 }
-
+// CREATE SECTION
 function createItem(section, criteria) {
      const targetSection = document.getElementById(section);
      const container = targetSection.querySelector('.container');
@@ -78,18 +80,22 @@ function createItem(section, criteria) {
 
           container.appendChild(field);
      })
-
+}
+// RELOAD VIEW SECTION
+function reload(){
+     createView(DATABASE);
 }
 
 
 // IN APP EVENTS
+
 window.onload = function () {
      axios.get('/api')
           .then(({ data }) => {
                if (data.length > 0) {
                     DATABASE = data;
-                    createHome(DATABASE);
                     createArrays(DATABASE);
+                    createHome(DATABASE);
                }
           })
           .catch(err => { alert(err) })
