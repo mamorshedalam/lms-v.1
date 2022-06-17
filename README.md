@@ -11,7 +11,7 @@ LMS is a smart web-based Library management system. LMS is so fast and easy to u
 - Input books with books name, book author, book category and cover image.
 - Filter books by author and category.
 - Can count how many books in every category and author have.
-- Read, update, delete any book
+- Read, update and delete any book
 
 
 #### Technology:
@@ -47,9 +47,9 @@ LMS is a smart web-based Library management system. LMS is so fast and easy to u
 
 ##### (Where find data)
  - Categories and Author's name will show in the menu after page load.
- - Category section will show books category-wise.
- - Author section will show books as author writes.
+ - The Category section will show books category-wise.
+ - The Author section will show books as author writes.
 
-Live link : https://lmv-v1.herokuapp.com/
+Live link: https://lmv-v1.herokuapp.com/
 
 Dashboard Link: https://lmv-v1.herokuapp.com/dashboard/
