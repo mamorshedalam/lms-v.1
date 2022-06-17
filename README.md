@@ -1,21 +1,17 @@
 ## Library Management System version 1
-Most book lovers face problems to manage their book library. They cannot memorize which book they have which not. So it's very important to have notes of them in any place. But if it 
+Most book lovers face problems to manage their book collection. They cannot memorize which book they have which not. So it's very important to have notes of them in any place. But if the data are stored on any paper or a notebook, it's become hard to maintain, have losing risk and if we can't find a book very easily.
 
+We need something smart and easy which we can access anytime anywhere to solve this problem. Where we can store our every data and access those data how we want.
 
-No more suffering. It's a revolutionary time. RMS is here to make it automatic and make it easier. RMS is a result management system, that can calculate marks and generate the result by itself. And can publish the result to the students. After entering every subject’s mark admin can public the result page to the student and students can search their results by themself.  
-
-RMS is a program, not a complete website. It’s can implement on any existing website. And we don’t have to worry about server-side, because this program only needs some database table with a proper schema. RMS’s all calculations and functional are on Front-end by Vanilla JavaScript. Which makes this program more confutable and easy to use.
+LMS is a smart web-based Library management system. LMS is so fast and easy to use. Here we can store our book data with images and authors by category. And we can filter books by authors and category.
 
 
 #### Features:
 
-- Input all student information together by excel sheet
-- Read, update, delete any student information
-- Create result for separate department & semester
-- Read, update, delete any result 
-- Find every individual result with roll, registration & semester
-- See marksheet if the result is not failed
-- Print marksheet if the result is not failed
+- Input books with books name, book author, book category and cover image.
+- Filter books by author and category.
+- Can count how many books in every category and author have.
+- Read, update, delete any book
 
 
 #### Technology:
@@ -26,38 +22,33 @@ RMS is a program, not a complete website. It’s can implement on any existing w
  - Node JS
  - Express JS
  - MongoDB
+ - Cloudinary
  - Axios
 
 
 #### Learning:
 
- - Convert JSON data from XLSX data
+ - Convert Image to bit 64 data
  - Server creation by Node JS
  - CRUD operations by Node JS
  - API creation by Express JS
  - Manage Route by Express JS
  - Manage data with MongoDB Database
  - Schema creation for MongoDB by Mongoose JS
- - Generate GPA, Points, Grade from numbers
+ - Host image on Cloudinary with MongoDB
+ - Show image from Cloudinary through MongoDB
  - Handle API with Axios
- - Print data sheet
 
 
 #### How to use:
 
-##### (Upload Student Information)
- - First, have to input student information into an excel sheet
- - After that, upload the excel sheet in student information form
- - In the end, submit student information with department, semester, session
-
 ##### (Upload Result)
- - First, find students by department, semester & session
- - Then, enter a subject name, code, full marks
- - In the end, submit result with each student numbers
+ - First, enter every book name, author and category with cover image.
 
-##### (Find & Print Result)
- - First, find every individual result with semester, roll, registration
- - Then, print your marksheet
+##### (Where find data)
+ - Categories and Author's name will show in the menu after page load.
+ - Category section will show books category-wise.
+ - Author section will show books as author writes.
 
 Live link : https://lmv-v1.herokuapp.com/
 
