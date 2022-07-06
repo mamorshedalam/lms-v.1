@@ -19,13 +19,13 @@ LMS is a smart web-based Library management system. LMS is so fast and easy to u
 1. Clone repository
 
 ```bash
-https://github.com/mamorshedalam/video-quiz.git
+https://github.com/mamorshedalam/lms-v.1.git
 ```
 
 2. Go to the folder
 
 ```bash
-cd video-quiz
+cd lms-v.1
 ```
 
 3. Install Node packages
@@ -37,13 +37,13 @@ npm i
 4. Run Local server with development change waching...
 
 ```bash
-npm start
+npm run dev
 ```
 
 5. Open browser
 
 ```bash
-http://localhost:3000
+http://localhost:4000
 ```
 
 
