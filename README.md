@@ -11,7 +11,40 @@ LMS is a smart web-based Library management system. LMS is so fast and easy to u
 - Input books with books name, book author, book category and cover image.
 - Filter books by author and category.
 - Can count how many books in every category and author have.
-- Read, update and delete any book
+- Read, update and delete any book.
+
+
+### Installation
+
+1. Clone repository
+
+```bash
+https://github.com/mamorshedalam/video-quiz.git
+```
+
+2. Go to the folder
+
+```bash
+cd video-quiz
+```
+
+3. Install Node packages
+
+```bash
+npm i
+```
+
+4. Run Local server with development change waching...
+
+```bash
+npm start
+```
+
+5. Open browser
+
+```bash
+http://localhost:3000
+```
 
 
 #### Technology:
@@ -28,16 +61,16 @@ LMS is a smart web-based Library management system. LMS is so fast and easy to u
 
 #### Learning:
 
- - Convert Image to bit 64 data
- - Server creation by Node JS
- - CRUD operations by Node JS
- - API creation by Express JS
- - Manage Route by Express JS
- - Manage data with MongoDB Database
- - Schema creation for MongoDB by Mongoose JS
- - Host image on Cloudinary with MongoDB
- - Show image from Cloudinary through MongoDB
- - Handle API with Axios
+ - Convert Image to bit 64 data.
+ - Server creation by Node JS.
+ - CRUD operations by Node JS.
+ - API creation by Express JS.
+ - Manage Route by Express JS.
+ - Manage data with MongoDB Database.
+ - Schema creation for MongoDB by Mongoose JS.
+ - Host image on Cloudinary with MongoDB.
+ - Show image from Cloudinary through MongoDB.
+ - Handle API with Axios.
 
 
 #### How to use:
